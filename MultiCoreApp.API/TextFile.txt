@@ -1,0 +1,22 @@
+﻿---------------------------------------------14.04.2022----------------------------------------------------------------------------------
+Coredayız BlankSolution bizde açılmadıgı için Core açtık 
+3 tane class library açtık sonra 1 tane mvc web 'i bulup açtık
+anlatıldı ve projeye baslandı
+Core Katmanına 4 tane folder eklendi
+MOdelsin içine Product classı eklendi ve içine kodlar yazıldı
+Category Modelsin içine açıldı kodlar yazıldı
+sonra IntRepository içine IRepository içine kodlar yazıldı Task sınıfı asenkron programlama için yazıldı dbyi ve viewi bölerek calıstırmak amacıyla
+IProductRepository interface açtık ve imzaları yazdık
+ICategoryRepository interface actık imzaları yazdık
+Service IService interface yazdık ve IRepository içindeki kodları oraya kopyaladık çünkü APIden gelen kullanıcının Db'ye erişmesini istemiyorum
+IProductService ve ICategoryService interfaceleri açılıp imzalar yazıldı
+Service katmanı businesslayer'a karşılık gelir
+UnitOfWork katmanı bir patterndir bir IUnitOfWork interface açıldı ve içine yazıldı ChangeTracker ile add ile savechange arasında bir şey yerleştirmek gerekirse UnitOfWork ile bunu sağlayabiliriz
+Program cs de bisiler anlatıldı
+Sonra DataAccessLayerda Repository folderı acıldı ve ihtiyacımız oldugu için Context classını olusturduk ve DbContext sınıfını kullanabilmemiz için nugetten core'ı indirdik
+Kodlar yazıldı
+API'nin içinde appsettings.json içine connectionstrings yazıldı fakat dataaccesslayerda da bu bilginin tasınması için program.csnin içine servis yazılması gerek yazdık fakat ondan önce EntityFrameWork Core SqlServerini Nugetten Api'ye yükledik
+migration için bir sürü paket indirdik add-migration Init yaptık
+program csde AddSingleton  ne olursa olsun sadece 1 defa olusturulsun 
+AddTransient kaç kere tetikleniyorsa o kadar kez tetikleniyorsa
+AddScoped yaşam döngüsünde ( response-request arası) bir kere tetiklenecek
