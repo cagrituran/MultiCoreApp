@@ -12,41 +12,43 @@ namespace MultiCoreApp.DataAccessLayer.Repository
     public class Repository<T> : IRepository<T> where T : class
 
     {
-        private readonly MultiDbContext _db;
+        protected readonly MultiDbContext _db;
         private readonly DbSet<T> _dbSet;
-        public Repository(MultiDbContext db,DbSet<T> dbSet)
+        public Repository(MultiDbContext db)
         {
             _db= db;
-            _dbSet= dbSet;
+            _dbSet= db.Set<T>();
         }
-        public Task AddAsync(T entity)
+        public async Task AddAsync(T entity)
         {
-            throw new NotImplementedException();
-        }
-
-        public Task AddRangeAsync(IEnumerable<T> entities)
-        {
-            throw new NotImplementedException();
+            await _dbSet.AddAsync(entity);
         }
 
-        public Task DeleteAsync(T entity)
+        public async Task AddRangeAsync(IEnumerable<T> entities)
         {
-            throw new NotImplementedException();
+            await _dbSet.AddRangeAsync(entities);
         }
 
-        public Task DeleteRangeAsync(IEnumerable<T> entities)
+        public async Task DeleteAsync(T entity)
         {
-            throw new NotImplementedException();
+            _dbSet.Remove(entity);
+            await _db.SaveChangesAsync();
         }
 
-        public Task<T> FirstOrDefaultAsync(Expression<Func<T, bool>> predicate)
+        public async Task DeleteRangeAsync(IEnumerable<T> entities)
         {
-            throw new NotImplementedException();
+            _dbSet.RemoveRange(entities);
+            await _db.SaveChangesAsync();
+        }
+
+        public async Task<T> FirstOrDefaultAsync(Expression<Func<T, bool>> predicate)
+        {
+            return (await _dbSet.FirstOrDefaultAsync(predicate))!;
         }
 
         public async Task<IEnumerable<T>> GetAllAsync()
         {
-            return await _db.Set<T>().ToListAsync();
+            return await _dbSet.ToListAsync();
         }
 
         public async Task<T> GetByIdAsync(int id)
@@ -54,34 +56,40 @@ namespace MultiCoreApp.DataAccessLayer.Repository
             return (await _dbSet.FindAsync(id))!;
         }
 
-        public Task<IQueryable<T>> QListAsync()
+        public async Task<T> GetByIdAsync(Guid id)
         {
-            throw new NotImplementedException();
+            return (await _dbSet.FindAsync(id))!;
+        }
+
+        public async Task<IQueryable<T>> QListAsync()
+        {
+            return await Task.FromResult(_dbSet.AsQueryable());
         }
 
         public void Remove(T entity)
         {
-            throw new NotImplementedException();
+            _dbSet.Remove(entity);
         }
 
         public void RemoveRange(IEnumerable<T> entities)
         {
-            throw new NotImplementedException();
+            _dbSet.RemoveRange(entities);
         }
 
-        public Task<T> SingleOrDefaultAsync(Expression<Func<T, bool>> predicate)
+        public async Task<T> SingleOrDefaultAsync(Expression<Func<T, bool>> predicate)
         {
-            throw new NotImplementedException();
+            return (await _dbSet.SingleOrDefaultAsync(predicate))!;
         }
 
         public T Update(T entity)
         {
-            throw new NotImplementedException();
+            _db.Entry(entity).State = EntityState.Modified;
+            return entity;
         }
 
-        public Task<IEnumerable<T>> Where(Expression<Func<T, bool>> predicate)
+        public async Task<IEnumerable<T>> Where(Expression<Func<T, bool>> predicate)
         {
-            throw new NotImplementedException();
+            return await _dbSet.Where(predicate).ToListAsync();
         }
     }
 }

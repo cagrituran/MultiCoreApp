@@ -20,3 +20,18 @@ migration için bir sürü paket indirdik add-migration Init yaptık
 program csde AddSingleton  ne olursa olsun sadece 1 defa olusturulsun 
 AddTransient kaç kere tetikleniyorsa o kadar kez tetikleniyorsa
 AddScoped yaşam döngüsünde ( response-request arası) bir kere tetiklenecek
+---------------------------------------------15.04.2022----------------------------------------------------------------------------------
+Repository Metodların içini yazdık
+ProductRepository sınıfı acıldı
+intleri guid tipine çevirdik ve öncesinde Repository'i degistirdik
+CategoryRepository açıldı yazıldı
+Service klasörü açıldı içine Service classı açıldı
+UnitOfWork Degistirildi ( IUnitOfWorkde degistirildi)
+service yazılıyordu iservicenin addlarını değiştirdik
+sonra service tamamlandı ondan sonra Category ve Product Servicelerini açıp metodları yazdık
+dalda Configurations olusturuldu
+içine fluentApiler yazıldı sonra ForeignKey kısmını yorum satırına alıp
+MultiDbContextde OnModelCreating metodu yazıldı
+Sonra DALDA Seeds folderı açıldı
+CategorySeed ve ProductSeed Yazıldı,new category silindi add-migration düzeldi
+CategoryController açıldı

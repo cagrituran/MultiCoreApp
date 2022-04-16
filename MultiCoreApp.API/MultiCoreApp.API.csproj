@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MultiCoreApp.DataAccessLayer\MultiCoreApp.DataAccessLayer.csproj" />
+    <ProjectReference Include="..\MultiCoreApp.Service\MultiCoreApp.Service.csproj" />
   </ItemGroup>
 
 </Project>

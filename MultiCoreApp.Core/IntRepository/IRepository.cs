@@ -11,7 +11,7 @@ namespace MultiCoreApp.Core.IntRepository
     {
         //Update-Delete Asenkron islemi yoktur
         //select kısmı
-        Task<T> GetByIdAsync(int id);   
+        Task<T> GetByIdAsync(Guid id);   
         Task<IEnumerable<T>> GetAllAsync();
         Task<IEnumerable<T>> Where(Expression<Func<T, bool>> predicate); // select * from Product where Name = "Apple"
 
