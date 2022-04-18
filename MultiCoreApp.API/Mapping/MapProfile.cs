@@ -17,6 +17,8 @@ namespace MultiCoreApp.API.Mapping
             CreateMap<CategoryWithProductsDto, Category>();
             CreateMap<Product, ProductsWithCategoryDto>();
             CreateMap<ProductsWithCategoryDto, Product>();
+            CreateMap<Customer, CustomerDto>();
+            CreateMap<CustomerDto, Customer>();
         }
     }
 }
