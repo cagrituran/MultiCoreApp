@@ -8,6 +8,13 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MultiCoreApp.Core\MultiCoreApp.Core.csproj" />
+    <ProjectReference Include="..\MultiCoreApp.DataAccessLayer\MultiCoreApp.DataAccessLayer.csproj" />
+    <ProjectReference Include="..\MultiCoreApp.Service\MultiCoreApp.Service.csproj" />
   </ItemGroup>
 
 </Project>

@@ -44,3 +44,18 @@ sonra CategoryController'da return OK'un içinde Mapping yaptırdık(Category i�
 CategoryWithProductsDto classı açıldı çünkü categorylere bağlı productları getirmem gerek
 aynısını ProductController yapıp düzelttik
 Customer classı açıldı
+---------------------------------------------19.04.2022----------------------------------------------------------------------------------
+Filters klasörü açıldı(Filterlar örneğin kullanıcıdan olmayan bi id geldiginde hata üretmesini istiyorum)
+CategoryNotFoundFilter açıldı içine kod yazıldı calısması için program.cs'ye yazdık ve CategoryControllerda hangi metod calısacagını metodun üstüne yazdık,product içinde yapılabilir
+ValidationFilter açıldı kodları yazıldı ve bütün kontrollerda kullanabilmesi için program.csde addcontrollersin içine method yazıldı bunuda kullanmak için Controller'ın tepesine validationFilter yazılıyor,beceremedik sora bakıcaz
+Extensions / UseCustomExtensionHandler  --> Extensionlar static olmalıdır.Request-response arasında middleware olarak çalısacak işi yapıp çekilecek ihtiyaç dahilinde
+Nugetten newjson'ı mvc apiye kurduk
+class tipindeki veriyi json'a çeviriyorum ve kullanıcıya öyle gönderiyorum ( server hataları)
+calısması için middleware kısmında calıstırıldı
+ValidationFilter için program.cs'e suppresleyen bi kod yazıldı ve kendi hatamızın gözükmesi sağlandı ve controllerdan ValidationFilter kaldırıldı
+MVC'ye DTOs katmanı açıp apiden mvcye classları kopyaladık
+mvcde categorycontroller acıldı
+omdb api json tipinde veri döndüren imdb sitesi
+CategoryController Index AR yazarken view olusturduk
+ViewImportsa using tanımladık Index viewinde kısayol kullanma kolaylıgı sağlandı
+Index'i yazdıktan sonra API'den yer alan program.csdeki AddScopeları ve Mapping dosyalarını da MVC'ye alıp MVCDen çalıstırdık(Henüz API-MVC arası bağlantımız yok)

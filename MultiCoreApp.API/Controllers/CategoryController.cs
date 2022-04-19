@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MultiCoreApp.API.DTOs;
+using MultiCoreApp.API.Filters;
 using MultiCoreApp.Core.IntService;
 using MultiCoreApp.Core.Models;
 
@@ -26,6 +27,7 @@ namespace MultiCoreApp.API.Controllers
             //return Ok(cat);
             return Ok(_mapper.Map<IEnumerable<CategoryDto>>(cat));
         }
+        [ServiceFilter(typeof(CategoryNotFoundFilter))]
         [HttpGet("{id:Guid}")]
         public async Task<IActionResult> GetById(Guid id)
         {
