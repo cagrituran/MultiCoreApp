@@ -13,6 +13,10 @@ builder.Services.AddHttpClient<CategoryApiService>(opt =>
 {
     opt.BaseAddress = new Uri(builder.Configuration["baseUrl"]);
 });
+builder.Services.AddHttpClient<ProductApiService>(opt =>
+{
+    opt.BaseAddress = new Uri(builder.Configuration["baseUrl"]);
+});
 builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddScoped(typeof(IService<>), typeof(Service<>));
