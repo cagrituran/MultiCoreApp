@@ -59,3 +59,16 @@ omdb api json tipinde veri döndüren imdb sitesi
 CategoryController Index AR yazarken view olusturduk
 ViewImportsa using tanımladık Index viewinde kısayol kullanma kolaylıgı sağlandı
 Index'i yazdıktan sonra API'den yer alan program.csdeki AddScopeları ve Mapping dosyalarını da MVC'ye alıp MVCDen çalıstırdık(Henüz API-MVC arası bağlantımız yok)
+---------------------------------------------20.04.2022----------------------------------------------------------------------------------
+apiyi tetiklememiz gerekiyor yukardan multiple startup projects olması lazım
+ApiServices klasörü açıldı ve içine CategoryApiService açıldı(uzakta bir sunucuya bağlanacagız yani api'ye)
+yazarken appsettings'e launchsttingsden port numarsı öğrenip yapıstırıyorum sonuna apide hep geleceği için apiyide yerlestirildik
+kullanmak için de program cs de yazıldı
+tetiklemek için mvcdeki categorycontrollera yazdık
+Post işlemi için categoryapiservice yazıldı
+categorycontroller içinde yazıldı (MVC)
+sonra o yazılırken create view açıldı ve yazıldı
+get işlemini parametreli olarak apiservicede yazıp kullandık örnek olması acısından
+CategoryControllerda Details AR 'si yazıp view yazdık kullandık
+update işlemi için categoryapiservice için servis yazılıp mvc tarafında categorycontrollerda da get ve post kısmını yazdık
+Sonra Update view açıldı ve yazıldı updateler edit olarak degistirdi cünkü apideki update gidiyordu
