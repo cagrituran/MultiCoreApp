@@ -60,7 +60,7 @@ namespace MultiCoreApp.API.Controllers
             _catService.RemoveRange(cat);
             return NoContent();
         }
-        [HttpGet("{id:guid}/products")]
+        [HttpGet("{id:guid}/product")]
         public async Task<IActionResult> GetWithProductById(Guid id)
         {
             var cat = await _catService.GetWithProductByIdAsync(id);

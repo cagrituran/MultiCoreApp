@@ -1,65 +1,43 @@
-﻿@model ProductDto
+﻿@model ProductsWithCategoryDto
 
 @{
-    ViewBag.Title = "Details";
+    ViewData["Title"] = "Details";
 }
 
-<h2>Details</h2>
+<h1>Details</h1>
 
 <div>
-    <h4>Products</h4>
+    <h4>Product</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Id)
-           
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Id)
-            
-        </dd>
-        <dt>
-          
+    <dl class="row">
+        <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Name)
-           
         </dt>
-        <dd>
-            
+        <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Name)
-            
         </dd>
-        <dt>
-           
-            @Html.DisplayNameFor(model => model.Price)
-           
-        </dt>
-        <dd>
-            
-            @Html.DisplayFor(model => model.Price)
-            
-        </dd>
-        <dt>
-           
+        <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Stock)
-            
         </dt>
-        <dd>
-            
+        <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Stock)
-            
         </dd>
-        <dt>
-            
-            @Html.DisplayNameFor(model => model.CategoryId)
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Price)
         </dt>
-
-        <dd>
-            
-            @Html.DisplayFor(model => model.CategoryId)
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+        
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Category)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Category.Name)
         </dd>
     </dl>
 </div>
-<p>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Güncelle</a>
-    <a asp-action="Index">Back to List</a>    
-</p>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

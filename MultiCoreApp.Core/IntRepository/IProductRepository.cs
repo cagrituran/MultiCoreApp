@@ -10,5 +10,6 @@ namespace MultiCoreApp.Core.IntRepository
     public interface IProductRepository:IRepository<Product>
     {
         Task<Product> GetWithCategoryByIdAsync(Guid proId);
+        Task<IEnumerable<Product>> GetAllWithCategoryAsync();
     }
 }
