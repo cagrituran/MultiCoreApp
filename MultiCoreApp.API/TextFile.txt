@@ -72,3 +72,9 @@ get işlemini parametreli olarak apiservicede yazıp kullandık örnek olması a
 CategoryControllerda Details AR 'si yazıp view yazdık kullandık
 update işlemi için categoryapiservice için servis yazılıp mvc tarafında categorycontrollerda da get ve post kısmını yazdık
 Sonra Update view açıldı ve yazıldı updateler edit olarak degistirdi cünkü apideki update gidiyordu
+---------------------------------------------21.04.2022----------------------------------------------------------------------------------
+product yapılacak bu yapılırken controller yaratırken entityframework kullanarak olusturduk ve sanal kullanmayacagımız bir db addledik
+productapiservice olusturduk
+controllerda ARleri yazdıktan sonra viewları olusturduk
+calıstı fakat ProductsWithCategoryDto'ya dönüştürdük hepsini bu kategori isimleri boş geliyordu bu yüzden metod ekleyerek bütün katmanlara metod ekleyerek apiden devam etmeye karar verdik apide ProductControllera AR yazdık
+Sonra swaggerda verileri çektikten sonra mvcden tetikleyip viewımda göstermek amacıyla mvc tarafında önce apiservicimde metodları yazıp sonra controllerdan tetiklemek amacıyla ar'ler yazıldı

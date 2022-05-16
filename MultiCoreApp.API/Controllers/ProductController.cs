@@ -57,11 +57,17 @@ namespace MultiCoreApp.API.Controllers
             _proService.RemoveRange(pro);
             return NoContent();
         }
-        [HttpGet("{id:Guid}/categories")]
+        [HttpGet("{id:Guid}/category")]
         public async Task<IActionResult> GetWithCategoryById(Guid id)
         {
             var pro = await _proService.GetWithCategoryByIdAsync(id);
             return Ok(_mapper.Map<ProductsWithCategoryDto>(pro));
+        }
+        [HttpGet("categoryall")]
+        public async Task<IActionResult> GetAllWithCategory()
+        {
+            var pro = await _proService.GetAllWithCategoryAsync();
+            return Ok(_mapper.Map<IEnumerable<ProductsWithCategoryDto>>(pro));
         }
     }
 }

@@ -11,29 +11,29 @@ namespace MultiCoreApp.MVC.ApiServices
         {
             _httpClient = httpClient;
         }
-        public async Task<IEnumerable<ProductDto>> GetAllAsync()
+        public async Task<IEnumerable<ProductsWithCategoryDto>> GetAllAsync()
         {
-            IEnumerable<ProductDto> productDtos;
+            IEnumerable<ProductsWithCategoryDto> ProductsWithCategoryDtos;
             var response = await _httpClient.GetAsync("product"); // api - controllerda verdigim isim neyse o
 
             if (response.IsSuccessStatusCode)
             {
-                productDtos = JsonConvert.DeserializeObject<IEnumerable<ProductDto>>(await response.Content.ReadAsStringAsync())!;
+                ProductsWithCategoryDtos = JsonConvert.DeserializeObject<IEnumerable<ProductsWithCategoryDto>>(await response.Content.ReadAsStringAsync())!;
 
             }
             else
             {
-                productDtos = null;
+                ProductsWithCategoryDtos = null;
             }
-            return productDtos;
+            return ProductsWithCategoryDtos;
 
         }
-        public async Task<ProductDto> GetByIdAsync(Guid id)
+        public async Task<ProductsWithCategoryDto> GetByIdAsync(Guid id)
         {
             var response = await _httpClient.GetAsync($"product/{id}");
             if (response.IsSuccessStatusCode)
             {
-                return JsonConvert.DeserializeObject<ProductDto>(await response.Content.ReadAsStringAsync())!;
+                return JsonConvert.DeserializeObject<ProductsWithCategoryDto>(await response.Content.ReadAsStringAsync())!;
             }
             else
             {
@@ -41,13 +41,13 @@ namespace MultiCoreApp.MVC.ApiServices
             }
 
         }
-        public async Task<ProductDto> AddAsync(ProductDto proDto)
+        public async Task<ProductsWithCategoryDto> AddAsync(ProductsWithCategoryDto proDto)
         {
             var stringContent = new StringContent(JsonConvert.SerializeObject(proDto), Encoding.UTF8, "application/json");
             var response = await _httpClient.PostAsync("product", stringContent);
             if (response.IsSuccessStatusCode)
             {
-                proDto = JsonConvert.DeserializeObject<ProductDto>(await response.Content.ReadAsStringAsync())!;
+                proDto = JsonConvert.DeserializeObject<ProductsWithCategoryDto>(await response.Content.ReadAsStringAsync())!;
                 return proDto;
 
             }
@@ -56,7 +56,7 @@ namespace MultiCoreApp.MVC.ApiServices
                 return null!;
             }
         }
-        public async Task<bool> Update(ProductDto proDto)
+        public async Task<bool> Update(ProductsWithCategoryDto proDto)
         {
             var stringContent = new StringContent(JsonConvert.SerializeObject(proDto), Encoding.UTF8, "application/json");
             var response = await _httpClient.PutAsync($"product", stringContent);
@@ -69,6 +69,40 @@ namespace MultiCoreApp.MVC.ApiServices
             {
                 return false;
             }
+        }
+        public async Task<IEnumerable<ProductsWithCategoryDto>> GetAllWithCategoryAsync()
+        {
+            IEnumerable<ProductsWithCategoryDto> ProductsWithCategoryDtos;
+            var response = await _httpClient.GetAsync("product/categoryall"); // api - controllerda verdigim isim neyse o
+
+            if (response.IsSuccessStatusCode)
+            {
+                ProductsWithCategoryDtos = JsonConvert.DeserializeObject<IEnumerable<ProductsWithCategoryDto>>(await response.Content.ReadAsStringAsync())!;
+
+            }
+            else
+            {
+                ProductsWithCategoryDtos = null;
+            }
+            return ProductsWithCategoryDtos;
+
+        }
+        public async Task<ProductsWithCategoryDto> GetByIdForDetailsAsync(Guid id)
+        {
+
+            var response = await _httpClient.GetAsync($"product/{id}/category"); // api - controllerda verdigim isim neyse o
+
+            if (response.IsSuccessStatusCode)
+            {
+                return JsonConvert.DeserializeObject<ProductsWithCategoryDto>(await response.Content.ReadAsStringAsync())!;
+
+            }
+            else
+            {
+                return null!;
+            }
+
+
         }
     }
 }
