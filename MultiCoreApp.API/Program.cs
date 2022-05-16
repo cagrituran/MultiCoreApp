@@ -28,6 +28,15 @@ builder.Services.AddDbContext<MultiDbContext>(options =>
           sqloptions.MigrationsAssembly("MultiCoreApp.DataAccessLayer");
       });
 });
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+        builderer =>
+        {
+            builderer.WithOrigins("http://localhost:3000");
+        });
+});
 builder.Services.AddControllers(o =>
 {
     o.Filters.Add(new ValidationFilter());
@@ -51,6 +60,7 @@ if (app.Environment.IsDevelopment())
 }
 app.UseCustomException();
 app.UseHttpsRedirection();
+app.UseCors(MyAllowSpecificOrigins);
 
 app.UseAuthorization();
 
