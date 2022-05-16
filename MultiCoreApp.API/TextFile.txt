@@ -35,3 +35,12 @@ MultiDbContextde OnModelCreating metodu yazıldı
 Sonra DALDA Seeds folderı açıldı
 CategorySeed ve ProductSeed Yazıldı,new category silindi add-migration düzeldi
 CategoryController açıldı
+---------------------------------------------18.04.2022----------------------------------------------------------------------------------
+automapper dependency injection mvc ve api katmanı için nugetten indirildi
+Program.cs'ye AddAutoMapper'ı ekledik(çalışmak istedigimz şeyler program.cs'de tetiklenir.)
+DTO's klasörü açtık ve içinde ProductDto,CategoryDto açtık ( kullanıcının görecegi kısım)
+Mapping klasöre MapProfile açıldı ( hangi tablolarla değişim yapacağını belirtmeliyim)
+sonra CategoryController'da return OK'un içinde Mapping yaptırdık(Category için PUT VE POST işlemleri yapıldı)
+CategoryWithProductsDto classı açıldı çünkü categorylere bağlı productları getirmem gerek
+aynısını ProductController yapıp düzelttik
+Customer classı açıldı
