@@ -1,4 +1,28 @@
+using Microsoft.EntityFrameworkCore;
+using MultiCoreApp.Core.IntRepository;
+using MultiCoreApp.Core.IntService;
+using MultiCoreApp.Core.IntUnitOfWork;
+using MultiCoreApp.DataAccessLayer;
+using MultiCoreApp.DataAccessLayer.Repository;
+using MultiCoreApp.DataAccessLayer.UnitOfWork;
+using MultiCoreApp.Service.Services;
+
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddAutoMapper(typeof(Program));
+builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+builder.Services.AddScoped(typeof(IService<>), typeof(Service<>));
+builder.Services.AddScoped<ICategoryService, CategoryService>();
+builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<ICustomerService, CustomerService>();
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddDbContext<MultiDbContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("SqlConStr"), sqlServerOptionsAction: sqloptions =>
+    {
+        sqloptions.EnableRetryOnFailure();
+        sqloptions.MigrationsAssembly("MultiCoreApp.DataAccessLayer");
+    });
+});
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

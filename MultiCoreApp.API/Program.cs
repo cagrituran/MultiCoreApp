@@ -1,4 +1,7 @@
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using MultiCoreApp.API.Extensions;
+using MultiCoreApp.API.Filters;
 using MultiCoreApp.Core.IntRepository;
 using MultiCoreApp.Core.IntService;
 using MultiCoreApp.Core.IntUnitOfWork;
@@ -9,6 +12,7 @@ using MultiCoreApp.Service.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddAutoMapper(typeof(Program));
+builder.Services.AddScoped<CategoryNotFoundFilter>();
 builder.Services.AddScoped(typeof(IRepository<>),typeof(Repository<>));
 builder.Services.AddScoped(typeof(IService<>), typeof(Service<>));
 builder.Services.AddScoped<ICategoryService, CategoryService>();
@@ -24,10 +28,17 @@ builder.Services.AddDbContext<MultiDbContext>(options =>
           sqloptions.MigrationsAssembly("MultiCoreApp.DataAccessLayer");
       });
 });
-builder.Services.AddControllers();
+builder.Services.AddControllers(o =>
+{
+    o.Filters.Add(new ValidationFilter());
+});
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.Configure<ApiBehaviorOptions>(options =>
+{
+    options.SuppressModelStateInvalidFilter = true;
+});
 
 var app = builder.Build();
 
@@ -38,7 +49,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.UseCustomException();
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
