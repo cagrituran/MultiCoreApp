@@ -9,8 +9,8 @@ namespace MultiCoreApp.Core.IntUnitOfWork
 {
     public interface IUnitOfWork
     {
-        IProductRepository ProductRepository { get; } // add ve savechange arasında eğer olusmussa bunu gerçeklestirebiliriz araya sokma işlemi
-        ICategoryRepository CategoryRepository { get; }
+        IProductRepository Product { get; } // add ve savechange arasında eğer olusmussa bunu gerçeklestirebiliriz araya sokma işlemi
+        ICategoryRepository Category { get; }
         void Commit(); // Update ve Remove için
         Task CommitAsync();//bu savechange islemi olacak
     }

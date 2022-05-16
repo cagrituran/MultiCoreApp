@@ -9,6 +9,6 @@ namespace MultiCoreApp.Core.IntRepository
 {
     public interface IProductRepository:IRepository<Product>
     {
-        Task<Product> GetWithCategoryByIdAsync(int proId);
+        Task<Product> GetWithCategoryByIdAsync(Guid proId);
     }
 }
