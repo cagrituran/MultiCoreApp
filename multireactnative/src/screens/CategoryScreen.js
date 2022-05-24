@@ -7,6 +7,7 @@
 import React, {Component} from 'react';
 import {View,StyleSheet, ActivityIndicator} from 'react-native';
 import {DataTable} from 'react-native-paper';
+import { Item } from 'react-native-paper/lib/typescript/components/List/List';
 
 export default class CategoryScreen extends Component {
   constructor(props) {
@@ -17,7 +18,7 @@ export default class CategoryScreen extends Component {
     };
   }
   componentDidMount() {
-    return fetch('https://localhost:7129/api/Category')
+    return fetch('https://jsonplaceholder.typicode.com/posts')
       .then(response => response.json())
       .then(responseJson => {
         this.setState({isLoading: false, dataSource: responseJson});
@@ -37,16 +38,18 @@ export default class CategoryScreen extends Component {
           <DataTable>
             <DataTable.Header>
               <DataTable.Title>Id</DataTable.Title>
-              <DataTable.Title>Category</DataTable.Title>
+              <DataTable.Title>Title</DataTable.Title>
+              <DataTable.Title>Body</DataTable.Title>
             </DataTable.Header>
-            <DataTable.Row>
-              <DataTable.Cell>1</DataTable.Cell>
-              <DataTable.Cell>Defter</DataTable.Cell>
+            {this.state.dataSource.map((item,key)=>(
+            <DataTable.Row key={item.id}>
+              <DataTable.Cell>{item.id}</DataTable.Cell>
+              <DataTable.Cell>{item.title}</DataTable.Cell>
+              <DataTable.Cell>{item.body}</DataTable.Cell>
+              
             </DataTable.Row>
-            <DataTable.Row>
-              <DataTable.Cell>2</DataTable.Cell>
-              <DataTable.Cell>Kalem</DataTable.Cell>
-            </DataTable.Row>
+    ))}
+            
           </DataTable>
         </View>
       );
