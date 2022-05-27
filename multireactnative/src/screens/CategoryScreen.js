@@ -18,7 +18,7 @@ export default class CategoryScreen extends Component {
     };
   }
   componentDidMount() {
-    return fetch('https://jsonplaceholder.typicode.com/posts')
+    return fetch('https://multicoreapp-api-fm4.conveyor.cloud/api/Category')
       .then(response => response.json())
       .then(responseJson => {
         this.setState({isLoading: false, dataSource: responseJson});
@@ -38,14 +38,14 @@ export default class CategoryScreen extends Component {
           <DataTable>
             <DataTable.Header>
               <DataTable.Title>Id</DataTable.Title>
-              <DataTable.Title>Title</DataTable.Title>
-              <DataTable.Title>Body</DataTable.Title>
+              <DataTable.Title>Name</DataTable.Title>
+              
             </DataTable.Header>
             {this.state.dataSource.map((item,key)=>(
             <DataTable.Row key={item.id}>
               <DataTable.Cell>{item.id}</DataTable.Cell>
-              <DataTable.Cell>{item.title}</DataTable.Cell>
-              <DataTable.Cell>{item.body}</DataTable.Cell>
+              <DataTable.Cell>{item.name}</DataTable.Cell>
+              
               
             </DataTable.Row>
     ))}
