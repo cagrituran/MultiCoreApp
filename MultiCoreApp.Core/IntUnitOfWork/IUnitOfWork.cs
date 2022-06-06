@@ -13,6 +13,7 @@ namespace MultiCoreApp.Core.IntUnitOfWork
         ICategoryRepository Category { get; }
 
         ICustomerRepository Customer { get; }
+        IUserRepository User{ get; }
         void Commit(); // Update ve Remove için
         Task CommitAsync();//bu savechange islemi olacak
     }

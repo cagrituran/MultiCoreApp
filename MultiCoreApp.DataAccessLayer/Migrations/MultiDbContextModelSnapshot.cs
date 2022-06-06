@@ -43,13 +43,13 @@ namespace MultiCoreApp.DataAccessLayer.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("8e943cf6-ee67-444c-9b52-a6c0047d0e2e"),
+                            Id = new Guid("e91b7f34-a36a-4d7f-ad01-e229b4df1c1c"),
                             IsDeleted = false,
                             Name = "Kalemler"
                         },
                         new
                         {
-                            Id = new Guid("1c6a967a-ab1d-4421-bc07-9197f78a5b42"),
+                            Id = new Guid("45b7c1d3-b293-432f-a44a-574fa877a30e"),
                             IsDeleted = false,
                             Name = "Defterler"
                         });
@@ -92,7 +92,7 @@ namespace MultiCoreApp.DataAccessLayer.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("f8f10a86-c942-4f34-90a1-b78c8455d309"),
+                            Id = new Guid("03be10fd-8b6e-4c36-ba0b-6ccdb30c6267"),
                             Address = "istanbul",
                             City = "ist",
                             Email = "cgr@hotmail.com",
@@ -102,7 +102,7 @@ namespace MultiCoreApp.DataAccessLayer.Migrations
                         },
                         new
                         {
-                            Id = new Guid("cfa58c5b-0445-44f6-a1a7-ea5b09cec4a5"),
+                            Id = new Guid("0ee2a2f4-cda7-4908-bd31-107eb0b3924e"),
                             Address = "ankara",
                             City = "ank",
                             Email = "feleket@hotmail.com",
@@ -144,8 +144,8 @@ namespace MultiCoreApp.DataAccessLayer.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("c011a66d-9eba-4f36-9048-9b295b7f614f"),
-                            CategoryId = new Guid("8e943cf6-ee67-444c-9b52-a6c0047d0e2e"),
+                            Id = new Guid("e0611732-466b-4ce7-b765-43daa6115e44"),
+                            CategoryId = new Guid("e91b7f34-a36a-4d7f-ad01-e229b4df1c1c"),
                             IsDeleted = false,
                             Name = "Dolma Kalem",
                             Price = 122.53m,
@@ -153,8 +153,8 @@ namespace MultiCoreApp.DataAccessLayer.Migrations
                         },
                         new
                         {
-                            Id = new Guid("d7a96b84-7d6c-4f3d-a849-47a48713fab5"),
-                            CategoryId = new Guid("8e943cf6-ee67-444c-9b52-a6c0047d0e2e"),
+                            Id = new Guid("b3732f85-04e4-4634-9632-ed3263e2bfb2"),
+                            CategoryId = new Guid("e91b7f34-a36a-4d7f-ad01-e229b4df1c1c"),
                             IsDeleted = false,
                             Name = "Tukenmez Kalem",
                             Price = 18.06m,
@@ -162,8 +162,8 @@ namespace MultiCoreApp.DataAccessLayer.Migrations
                         },
                         new
                         {
-                            Id = new Guid("863a6e43-ca77-4310-a674-209b5eb7d7bc"),
-                            CategoryId = new Guid("8e943cf6-ee67-444c-9b52-a6c0047d0e2e"),
+                            Id = new Guid("13ec1b2a-5774-4b4d-b9a9-50ca005bbfd7"),
+                            CategoryId = new Guid("e91b7f34-a36a-4d7f-ad01-e229b4df1c1c"),
                             IsDeleted = false,
                             Name = "Kursun Kalem",
                             Price = 62.13m,
@@ -171,8 +171,8 @@ namespace MultiCoreApp.DataAccessLayer.Migrations
                         },
                         new
                         {
-                            Id = new Guid("d8873e83-65d3-498e-8d9b-bb9fe1d6d39d"),
-                            CategoryId = new Guid("1c6a967a-ab1d-4421-bc07-9197f78a5b42"),
+                            Id = new Guid("acc30677-d16c-487d-a38a-d817e905f5ae"),
+                            CategoryId = new Guid("45b7c1d3-b293-432f-a44a-574fa877a30e"),
                             IsDeleted = false,
                             Name = "Cizgili Defter",
                             Price = 122.53m,
@@ -180,8 +180,8 @@ namespace MultiCoreApp.DataAccessLayer.Migrations
                         },
                         new
                         {
-                            Id = new Guid("d2fa75f7-a722-4568-8b3f-0674d51e15a7"),
-                            CategoryId = new Guid("1c6a967a-ab1d-4421-bc07-9197f78a5b42"),
+                            Id = new Guid("5ae24e68-9e5e-4f5a-a769-d533ef6e0167"),
+                            CategoryId = new Guid("45b7c1d3-b293-432f-a44a-574fa877a30e"),
                             IsDeleted = false,
                             Name = "Kareli Defter",
                             Price = 18.06m,
@@ -189,13 +189,49 @@ namespace MultiCoreApp.DataAccessLayer.Migrations
                         },
                         new
                         {
-                            Id = new Guid("8d75fcf3-81a0-41d0-ad9f-1582e4ae8107"),
-                            CategoryId = new Guid("1c6a967a-ab1d-4421-bc07-9197f78a5b42"),
+                            Id = new Guid("5f11f3dd-8fa5-4d49-b583-de2dcfb5d4b8"),
+                            CategoryId = new Guid("45b7c1d3-b293-432f-a44a-574fa877a30e"),
                             IsDeleted = false,
                             Name = "Dumduz Defter",
                             Price = 62.13m,
                             Stock = 0
                         });
+                });
+
+            modelBuilder.Entity("MultiCoreApp.Core.Models.User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RefreshToken")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("RefreshTokenEndDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("SurName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("MultiCoreApp.Core.Models.Product", b =>
