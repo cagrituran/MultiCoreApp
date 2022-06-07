@@ -42,6 +42,7 @@ builder.Services.AddCors(options =>
             builderer.WithOrigins("http://localhost:3000");
         });
 });
+builder.Services.Configure<CustomTokenOptions>(builder.Configuration.GetSection("TokenOption"));
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;

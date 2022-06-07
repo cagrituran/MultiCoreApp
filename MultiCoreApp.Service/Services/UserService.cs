@@ -16,5 +16,10 @@ namespace MultiCoreApp.Service.Services
         {
 
         }
+
+        public User UserFindById(int userId)
+        {
+            return _unit.User.UserFindById(userId);
+        }
     }
 }

@@ -9,5 +9,6 @@ namespace MultiCoreApp.Core.IntRepository
 {
     public interface IUserRepository:IRepository<User>
     {
+        User UserFindById(int userId);
     }
 }

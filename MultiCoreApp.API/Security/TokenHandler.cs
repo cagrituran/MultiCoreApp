@@ -2,6 +2,8 @@
 using Microsoft.IdentityModel.Tokens;
 using MultiCoreApp.Core.Models;
 using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Security.Cryptography;
 
 namespace MultiCoreApp.API.Security
 {
@@ -34,10 +36,31 @@ namespace MultiCoreApp.API.Security
             accessToken.Expiration=accessTokenExpiration;
             return accessToken;
         }
+        private string CreateRefreshToken()
+        {
+            var numberByte = new byte[32];
+            using(var rng = RandomNumberGenerator.Create())
+            {
+                rng.GetBytes(numberByte);
+                return Convert.ToBase64String(numberByte);
+            }
+        }
+        private IEnumerable<Claim> GetClaims(User user)
+        {
+            var claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.NameIdentifier,user.Id.ToString()),
+                new Claim(JwtRegisteredClaimNames.Email,user.Email),
+                new Claim(ClaimTypes.Name,$"{user.Name} {user.SurName}"),
+                new Claim(JwtRegisteredClaimNames.Jti,Guid.NewGuid().ToString())
 
+
+            };
+            return claims;
+        }
         public void RevokeRefreshToken(User user)
         {
-            throw new NotImplementedException();
+            user.RefreshToken=null;
         }
     }
 }

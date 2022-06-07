@@ -9,5 +9,6 @@ namespace MultiCoreApp.Core.IntService
 {
     public interface IUserService:IService<User>
     {
+        User UserFindById(int userId);
     }
 }
