@@ -47,7 +47,7 @@ namespace MultiCoreApp.API.Controllers
 
             }
             else
-            {//dfdffd
+            {//dfdffdsadasd
                 return BadRequest(ur.ErrorMessage);
             }
         }
