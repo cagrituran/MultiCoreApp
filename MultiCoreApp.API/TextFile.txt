@@ -78,3 +78,5 @@ productapiservice olusturduk
 controllerda ARleri yazdıktan sonra viewları olusturduk
 calıstı fakat ProductsWithCategoryDto'ya dönüştürdük hepsini bu kategori isimleri boş geliyordu bu yüzden metod ekleyerek bütün katmanlara metod ekleyerek apiden devam etmeye karar verdik apide ProductControllera AR yazdık
 Sonra swaggerda verileri çektikten sonra mvcden tetikleyip viewımda göstermek amacıyla mvc tarafında önce apiservicimde metodları yazıp sonra controllerdan tetiklemek amacıyla ar'ler yazıldı
+---------------------------------------------06.06.2022---------------------------------------------------------------------------
+jwt uygulanması için user sınıfı olusturukldu
