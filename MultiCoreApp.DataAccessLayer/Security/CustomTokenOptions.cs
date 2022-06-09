@@ -1,4 +1,4 @@
-﻿namespace MultiCoreApp.API.Security
+﻿namespace MultiCoreApp.DataAccessLayer.Security
 {
     public class CustomTokenOptions
     {

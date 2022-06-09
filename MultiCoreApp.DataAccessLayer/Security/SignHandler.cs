@@ -1,7 +1,7 @@
 ﻿using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
-namespace MultiCoreApp.API.Security
+namespace MultiCoreApp.DataAccessLayer.Security
 {
     public static class SignHandler
     {

@@ -1,4 +1,5 @@
 ﻿using MultiCoreApp.Core.Models;
+using MultiCoreApp.Core.Responses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,12 @@ namespace MultiCoreApp.Core.IntService
 {
     public interface IUserService:IService<User>
     {
-        User UserFindById(int userId);
+        BaseResponse<User> UserFindById(int userId);
+        BaseResponse<User> AddUser(User user);
+        BaseResponse<User> FindByEmailPassword(string email, string password);
+        void SaveRefreshToken(int userId, string refreshToken);
+        BaseResponse<User> GetUserWithRefreshToken(string refreshToken);
+
+        void RemoveRefreshToken(User user);
     }
 }

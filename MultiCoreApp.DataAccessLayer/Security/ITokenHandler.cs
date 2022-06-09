@@ -1,6 +1,8 @@
 ﻿using MultiCoreApp.Core.Models;
 
-namespace MultiCoreApp.API.Security
+using MultiCoreApp.DataAccessLayer.Security;
+
+namespace MultiCoreApp.DataAccessLayer.Security
 {
     public interface ITokenHandler
     {

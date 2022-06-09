@@ -1,4 +1,4 @@
-﻿namespace MultiCoreApp.API.Responses
+﻿namespace MultiCoreApp.Core.Responses
 {
     public class BaseResponse<T> where T : class
     {

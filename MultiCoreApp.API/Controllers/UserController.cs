@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MultiCoreApp.API.DTOs;
-using MultiCoreApp.API.Responses;
+using MultiCoreApp.Core.Responses;
 using MultiCoreApp.Core.IntService;
 using MultiCoreApp.Core.Models;
 using System.Security.Claims;
@@ -20,6 +20,7 @@ namespace MultiCoreApp.API.Controllers
            _userService = userService;
           _mapper = mapper;
         }
+        [HttpGet]
         public IActionResult GetUser()
         {
             IEnumerable<Claim> claims = User.Claims;

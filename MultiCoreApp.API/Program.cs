@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using MultiCoreApp.API.Extensions;
 using MultiCoreApp.API.Filters;
-using MultiCoreApp.API.Security;
+using MultiCoreApp.DataAccessLayer.Security;
 using MultiCoreApp.Core.IntRepository;
 using MultiCoreApp.Core.IntService;
 using MultiCoreApp.Core.IntUnitOfWork;
@@ -13,6 +13,7 @@ using MultiCoreApp.DataAccessLayer.Repository;
 using MultiCoreApp.DataAccessLayer.UnitOfWork;
 using MultiCoreApp.Service.Services;
 using System.Text;
+using TokenHandler = MultiCoreApp.DataAccessLayer.Security.TokenHandler;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddAutoMapper(typeof(Program));
@@ -23,6 +24,7 @@ builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<ICustomerService, CustomerService>();
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<ITokenHandler, TokenHandler>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 // Add services to the container.
 builder.Services.AddDbContext<MultiDbContext>(options =>
@@ -81,6 +83,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
 app.UseCustomException();
 app.UseHttpsRedirection();
 app.UseAuthentication();
