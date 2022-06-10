@@ -6,6 +6,7 @@ using MultiCoreApp.Core.Responses;
 using MultiCoreApp.Core.IntService;
 using MultiCoreApp.Core.Models;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MultiCoreApp.API.Controllers
 {
@@ -20,27 +21,29 @@ namespace MultiCoreApp.API.Controllers
            _userService = userService;
           _mapper = mapper;
         }
+        
         [HttpGet]
+        [Authorize]
         public IActionResult GetUser()
         {
             IEnumerable<Claim> claims = User.Claims;
             string userId = claims.Where(s => s.Type==ClaimTypes.NameIdentifier).First().Value;
-            var useResponse = _userService.UserFindById(int.Parse(userId));
-            var user = _mapper.Map<BaseResponse<User>>(useResponse);
-            if (user.Success)
+            BaseResponse<User> useResponse = _userService.UserFindById(int.Parse(userId));
+            
+            if (useResponse.Success)
             {
-                return Ok(user.Extra);
+                return Ok(useResponse.Extra);
             }
             else
             {
-                return BadRequest(user.ErrorMessage);
+                return BadRequest(useResponse.ErrorMessage);
             }
         }
         [HttpPost]
         public IActionResult AddUser(UserDto userDto)
         {
             User user = _mapper.Map<UserDto,User>(userDto);
-            var userResponse = _userService.AddAsync(user);
+            var userResponse = _userService.AddUser(user);
             var ur = _mapper.Map<BaseResponse<User>>(userResponse);
             if (ur.Success)
             {
