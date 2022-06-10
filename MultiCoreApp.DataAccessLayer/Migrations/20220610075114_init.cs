@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace MultiCoreApp.DataAccessLayer.Migrations
 {
-    public partial class Selam : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -49,7 +49,7 @@ namespace MultiCoreApp.DataAccessLayer.Migrations
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     SurName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    RefreshToken = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    RefreshToken = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     RefreshTokenEndDate = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
@@ -84,8 +84,8 @@ namespace MultiCoreApp.DataAccessLayer.Migrations
                 columns: new[] { "Id", "IsDeleted", "Name" },
                 values: new object[,]
                 {
-                    { new Guid("45b7c1d3-b293-432f-a44a-574fa877a30e"), false, "Defterler" },
-                    { new Guid("e91b7f34-a36a-4d7f-ad01-e229b4df1c1c"), false, "Kalemler" }
+                    { new Guid("8483e2d1-d39b-4f5a-b54d-c324e5e4bd3f"), false, "Kalemler" },
+                    { new Guid("90b46255-3b0d-48d6-a52e-2b5cff5ea49f"), false, "Defterler" }
                 });
 
             migrationBuilder.InsertData(
@@ -93,8 +93,8 @@ namespace MultiCoreApp.DataAccessLayer.Migrations
                 columns: new[] { "Id", "Address", "City", "Email", "IsDeleted", "Name", "Phone" },
                 values: new object[,]
                 {
-                    { new Guid("03be10fd-8b6e-4c36-ba0b-6ccdb30c6267"), "istanbul", "ist", "cgr@hotmail.com", false, "Mehmet Aga", "555" },
-                    { new Guid("0ee2a2f4-cda7-4908-bd31-107eb0b3924e"), "ankara", "ank", "feleket@hotmail.com", false, "Hasan Aga", "333" }
+                    { new Guid("8fce5dce-0308-4921-8be8-1e0346153bdf"), "istanbul", "ist", "cgr@hotmail.com", false, "Mehmet Aga", "555" },
+                    { new Guid("cd8bd2ec-4307-4cf6-83b1-c9ecafae98e8"), "ankara", "ank", "feleket@hotmail.com", false, "Hasan Aga", "333" }
                 });
 
             migrationBuilder.InsertData(
@@ -102,12 +102,12 @@ namespace MultiCoreApp.DataAccessLayer.Migrations
                 columns: new[] { "Id", "CategoryId", "IsDeleted", "Name", "Price", "Stock" },
                 values: new object[,]
                 {
-                    { new Guid("13ec1b2a-5774-4b4d-b9a9-50ca005bbfd7"), new Guid("e91b7f34-a36a-4d7f-ad01-e229b4df1c1c"), false, "Kursun Kalem", 62.13m, 100 },
-                    { new Guid("5ae24e68-9e5e-4f5a-a769-d533ef6e0167"), new Guid("45b7c1d3-b293-432f-a44a-574fa877a30e"), false, "Kareli Defter", 18.06m, 100 },
-                    { new Guid("5f11f3dd-8fa5-4d49-b583-de2dcfb5d4b8"), new Guid("45b7c1d3-b293-432f-a44a-574fa877a30e"), false, "Dumduz Defter", 62.13m, 0 },
-                    { new Guid("acc30677-d16c-487d-a38a-d817e905f5ae"), new Guid("45b7c1d3-b293-432f-a44a-574fa877a30e"), false, "Cizgili Defter", 122.53m, 100 },
-                    { new Guid("b3732f85-04e4-4634-9632-ed3263e2bfb2"), new Guid("e91b7f34-a36a-4d7f-ad01-e229b4df1c1c"), false, "Tukenmez Kalem", 18.06m, 100 },
-                    { new Guid("e0611732-466b-4ce7-b765-43daa6115e44"), new Guid("e91b7f34-a36a-4d7f-ad01-e229b4df1c1c"), false, "Dolma Kalem", 122.53m, 100 }
+                    { new Guid("08237e5f-26b6-4a8d-8218-dadbacb43ec7"), new Guid("8483e2d1-d39b-4f5a-b54d-c324e5e4bd3f"), false, "Kursun Kalem", 62.13m, 100 },
+                    { new Guid("4be9c56f-b471-4019-acaf-1ab7fc3593bc"), new Guid("8483e2d1-d39b-4f5a-b54d-c324e5e4bd3f"), false, "Dolma Kalem", 122.53m, 100 },
+                    { new Guid("7266fa7d-9d1a-4918-8d8f-a361c69ea6cc"), new Guid("8483e2d1-d39b-4f5a-b54d-c324e5e4bd3f"), false, "Tukenmez Kalem", 18.06m, 100 },
+                    { new Guid("9e334ce5-37aa-44e4-b067-feda84460c80"), new Guid("90b46255-3b0d-48d6-a52e-2b5cff5ea49f"), false, "Dumduz Defter", 62.13m, 0 },
+                    { new Guid("b592e445-3f44-4b6c-aa18-b90876cd8660"), new Guid("90b46255-3b0d-48d6-a52e-2b5cff5ea49f"), false, "Kareli Defter", 18.06m, 100 },
+                    { new Guid("df30adff-1ad1-4b26-9d0a-a52fa4aa8f1c"), new Guid("90b46255-3b0d-48d6-a52e-2b5cff5ea49f"), false, "Cizgili Defter", 122.53m, 100 }
                 });
 
             migrationBuilder.CreateIndex(

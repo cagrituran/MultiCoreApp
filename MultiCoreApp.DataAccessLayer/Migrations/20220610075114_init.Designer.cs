@@ -12,8 +12,8 @@ using MultiCoreApp.DataAccessLayer;
 namespace MultiCoreApp.DataAccessLayer.Migrations
 {
     [DbContext(typeof(MultiDbContext))]
-    [Migration("20220606073519_Selam")]
-    partial class Selam
+    [Migration("20220610075114_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -45,13 +45,13 @@ namespace MultiCoreApp.DataAccessLayer.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("e91b7f34-a36a-4d7f-ad01-e229b4df1c1c"),
+                            Id = new Guid("8483e2d1-d39b-4f5a-b54d-c324e5e4bd3f"),
                             IsDeleted = false,
                             Name = "Kalemler"
                         },
                         new
                         {
-                            Id = new Guid("45b7c1d3-b293-432f-a44a-574fa877a30e"),
+                            Id = new Guid("90b46255-3b0d-48d6-a52e-2b5cff5ea49f"),
                             IsDeleted = false,
                             Name = "Defterler"
                         });
@@ -94,7 +94,7 @@ namespace MultiCoreApp.DataAccessLayer.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("03be10fd-8b6e-4c36-ba0b-6ccdb30c6267"),
+                            Id = new Guid("8fce5dce-0308-4921-8be8-1e0346153bdf"),
                             Address = "istanbul",
                             City = "ist",
                             Email = "cgr@hotmail.com",
@@ -104,7 +104,7 @@ namespace MultiCoreApp.DataAccessLayer.Migrations
                         },
                         new
                         {
-                            Id = new Guid("0ee2a2f4-cda7-4908-bd31-107eb0b3924e"),
+                            Id = new Guid("cd8bd2ec-4307-4cf6-83b1-c9ecafae98e8"),
                             Address = "ankara",
                             City = "ank",
                             Email = "feleket@hotmail.com",
@@ -146,8 +146,8 @@ namespace MultiCoreApp.DataAccessLayer.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("e0611732-466b-4ce7-b765-43daa6115e44"),
-                            CategoryId = new Guid("e91b7f34-a36a-4d7f-ad01-e229b4df1c1c"),
+                            Id = new Guid("4be9c56f-b471-4019-acaf-1ab7fc3593bc"),
+                            CategoryId = new Guid("8483e2d1-d39b-4f5a-b54d-c324e5e4bd3f"),
                             IsDeleted = false,
                             Name = "Dolma Kalem",
                             Price = 122.53m,
@@ -155,8 +155,8 @@ namespace MultiCoreApp.DataAccessLayer.Migrations
                         },
                         new
                         {
-                            Id = new Guid("b3732f85-04e4-4634-9632-ed3263e2bfb2"),
-                            CategoryId = new Guid("e91b7f34-a36a-4d7f-ad01-e229b4df1c1c"),
+                            Id = new Guid("7266fa7d-9d1a-4918-8d8f-a361c69ea6cc"),
+                            CategoryId = new Guid("8483e2d1-d39b-4f5a-b54d-c324e5e4bd3f"),
                             IsDeleted = false,
                             Name = "Tukenmez Kalem",
                             Price = 18.06m,
@@ -164,8 +164,8 @@ namespace MultiCoreApp.DataAccessLayer.Migrations
                         },
                         new
                         {
-                            Id = new Guid("13ec1b2a-5774-4b4d-b9a9-50ca005bbfd7"),
-                            CategoryId = new Guid("e91b7f34-a36a-4d7f-ad01-e229b4df1c1c"),
+                            Id = new Guid("08237e5f-26b6-4a8d-8218-dadbacb43ec7"),
+                            CategoryId = new Guid("8483e2d1-d39b-4f5a-b54d-c324e5e4bd3f"),
                             IsDeleted = false,
                             Name = "Kursun Kalem",
                             Price = 62.13m,
@@ -173,8 +173,8 @@ namespace MultiCoreApp.DataAccessLayer.Migrations
                         },
                         new
                         {
-                            Id = new Guid("acc30677-d16c-487d-a38a-d817e905f5ae"),
-                            CategoryId = new Guid("45b7c1d3-b293-432f-a44a-574fa877a30e"),
+                            Id = new Guid("df30adff-1ad1-4b26-9d0a-a52fa4aa8f1c"),
+                            CategoryId = new Guid("90b46255-3b0d-48d6-a52e-2b5cff5ea49f"),
                             IsDeleted = false,
                             Name = "Cizgili Defter",
                             Price = 122.53m,
@@ -182,8 +182,8 @@ namespace MultiCoreApp.DataAccessLayer.Migrations
                         },
                         new
                         {
-                            Id = new Guid("5ae24e68-9e5e-4f5a-a769-d533ef6e0167"),
-                            CategoryId = new Guid("45b7c1d3-b293-432f-a44a-574fa877a30e"),
+                            Id = new Guid("b592e445-3f44-4b6c-aa18-b90876cd8660"),
+                            CategoryId = new Guid("90b46255-3b0d-48d6-a52e-2b5cff5ea49f"),
                             IsDeleted = false,
                             Name = "Kareli Defter",
                             Price = 18.06m,
@@ -191,8 +191,8 @@ namespace MultiCoreApp.DataAccessLayer.Migrations
                         },
                         new
                         {
-                            Id = new Guid("5f11f3dd-8fa5-4d49-b583-de2dcfb5d4b8"),
-                            CategoryId = new Guid("45b7c1d3-b293-432f-a44a-574fa877a30e"),
+                            Id = new Guid("9e334ce5-37aa-44e4-b067-feda84460c80"),
+                            CategoryId = new Guid("90b46255-3b0d-48d6-a52e-2b5cff5ea49f"),
                             IsDeleted = false,
                             Name = "Dumduz Defter",
                             Price = 62.13m,
@@ -221,7 +221,6 @@ namespace MultiCoreApp.DataAccessLayer.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("RefreshToken")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("RefreshTokenEndDate")

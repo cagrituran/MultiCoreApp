@@ -24,7 +24,7 @@ namespace MultiCoreApp.DataAccessLayer.Security
                 issuer: _tokenOptions.Issuer,
                 audience: _tokenOptions.Audience,
                 expires: accessTokenExpiration,
-                notBefore: DateTime.Now,
+                notBefore: DateTime.Now.AddMilliseconds(-50),
                 claims:GetClaims(user),
                 signingCredentials:signingCredentials
 

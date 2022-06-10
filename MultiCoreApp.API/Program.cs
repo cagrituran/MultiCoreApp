@@ -25,6 +25,8 @@ builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<ICustomerService, CustomerService>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<ITokenHandler, TokenHandler>();
+builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
+
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 // Add services to the container.
 builder.Services.AddDbContext<MultiDbContext>(options =>
